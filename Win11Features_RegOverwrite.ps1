@@ -33,14 +33,33 @@
             }
         }
     }
-
+    #Enables Local Secuity Authority
+    LSAEnable = @{
+        key1 = @{
+            Path = "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa"
+            Properties = @{
+                RunAsPPL = @{
+                    Name = "RunAsPPL"
+                    Type = "REG_DWORD"
+                    Data = "2"
+                }
+                RunAsPPLBoot = @{
+                    Name = "RunAsPPLBoot"
+                    Type = "REG_DWORD"
+                    Data = "2"
+                }
+            }
+        }
+    }
 }
 
 
 ForEach($adjust in $Win11RegAdj.Keys){
     ForEach($key in $Win11RegAdj.$adjust.Keys){
-
-        New-Item -Path $Win11RegAdj.$adjust.$key.Path -Force
+        $Exist = (Test-Path -Path $Win11RegAdj.$adjust.$key.Path)
+        If($Exist -eq $FALSE){
+            New-Item -Path $Win11RegAdj.$adjust.$key.Path
+        }
         ForEach($property in $Win11RegAdj.$adjust.$key.Properties.Keys){
 
             $Type = ""
