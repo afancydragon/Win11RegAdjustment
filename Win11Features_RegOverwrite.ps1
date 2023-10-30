@@ -1,4 +1,10 @@
-﻿$Win11RegAdj = @{
+﻿$Win11AppList = (
+    "MicrosoftWindows.Client.WebExperience", #Widgets
+    "LenovoCompanion", #Lenovo Bloat
+    "MicrosoftTeams" #Microsoft Teams
+)
+
+$Win11RegAdj = @{
 
     #This adds the Context Menu from 10 back to Win11 after a Reboot
     ContextMenu = @{
@@ -51,8 +57,43 @@
             }
         }
     }
+    #Remove the TeamsChat Icon at the bottom of Win11, prevent reinstallation of teams
+    TeamsChatOFF = @{
+        key1 = @{
+            Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"
+            Properties = @{
+                ConfigureChatAutoInstall = @{
+                    Name = "ConfigureChatAutoInstall"
+                    Type = "REG_DWORD"
+                    Data = "0"
+                }
+            }
+        }
+        key2 = @{
+            Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Chat"
+            Properties = @{
+                ChatIcon  = @{
+                    Name = "ChatIcon"
+                    Type = "REG_DWORD"
+                    Data = "3"
+                }
+            }
+        }
+    }
+    #Left Alignment Windows 11
+    LeftAlign11 = @{
+        key1 = @{
+            Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+            Properties = @{
+                TaskbarAl = @{
+                    Name = "TaskbarAl"
+                    Type = "REG_DWORD"
+                    Data = "0" #1 is center
+                }
+            }
+        }
+    }
 }
-
 
 ForEach($adjust in $Win11RegAdj.Keys){
     ForEach($key in $Win11RegAdj.$adjust.Keys){
@@ -85,4 +126,8 @@ ForEach($adjust in $Win11RegAdj.Keys){
             -Force
         }
     }
+}
+
+ForEach($app in $Win11AppList){
+    Get-AppxPackage -AllUsers -Name "*$app*" | Remove-AppxPackage -AllUsers
 }
