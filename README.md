@@ -13,11 +13,10 @@ This currently forcibly adds keys meaning it will overwrite everything if the ke
 Make sure to add all properties under each key.  
 
 ## EXAMPLE KEY
+  
 AdjustmentName = @{  
-    #We should have a comment here to explain what the edits do  
     #<- This makes a comment so we can track what the reg edits do  
-    #Comments off to the side below are not needed, but here for an explanation  
-   
+    #Comments off to the side below are not needed, but here for an explanation and can be done similarly.  
     key1 = @{                                            #Key or folder, name of this doesn't matter  
                                                          #you can make as many keys as needed under each adjustment.  
 
