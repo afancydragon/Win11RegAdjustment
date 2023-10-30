@@ -15,8 +15,10 @@ Make sure to add all properties under each key.
 ## EXAMPLE KEY
 ```
 AdjustmentName = @{  
-    #<- This makes a comment so we can track what the reg edits do  
-    #Comments off to the side below are not needed, but here for an explanation and can be done similarly.  
+
+    # <- This makes a comment so we can track what the reg edits do  
+    #Comments off to the side like below are not needed, but there for an explanation and can be done similarly.  
+
     key1 = @{                                            #Key or folder, name of this doesn't matter  
                                                          #you can make as many keys as needed under each adjustment.  
 
