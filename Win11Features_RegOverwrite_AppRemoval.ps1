@@ -92,6 +92,19 @@ $Win11RegAdj = @{
             }
         }
     }
+    #Core Isolation Enable
+    CoreIsolation = @{
+        key1 = @{
+            Path = "HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios"
+            Properties = @{
+                HypervisorEnforcedCodeIntegrity = @{
+                    Name = "HypervisorEnforcedCodeIntegrity"
+                    Type = "REG_DWORD"
+                    Date = "1"
+                }
+            }
+        }
+    }
 }
 
 ForEach($adjust in $Win11RegAdj.Keys){
