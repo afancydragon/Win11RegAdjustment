@@ -17,7 +17,7 @@ AdjustmentName = @{
     #We should have a comment here to explain what the edits do  
     #<- This makes a comment so we can track what the reg edits do  
     #Comments off to the side below are not needed, but here for an explanation  
-      
+   
     key1 = @{                                            #Key or folder, name of this doesn't matter  
                                                          #you can make as many keys as needed under each adjustment.  
 
