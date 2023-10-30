@@ -13,7 +13,7 @@ This currently forcibly adds keys meaning it will overwrite everything if the ke
 Make sure to add all properties under each key.  
 
 ## EXAMPLE KEY
-  
+
 AdjustmentName = @{  
     #<- This makes a comment so we can track what the reg edits do  
     #Comments off to the side below are not needed, but here for an explanation and can be done similarly.  
@@ -47,4 +47,5 @@ AdjustmentName = @{
             }  
         }  
     }  
-}   
+} 
+  
