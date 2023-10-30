@@ -5,7 +5,6 @@
 )
 
 $Win11RegAdj = @{
-
     #This adds the Context Menu from 10 back to Win11 after a Reboot
     ContextMenu = @{
         key1 = @{
@@ -102,10 +101,8 @@ ForEach($adjust in $Win11RegAdj.Keys){
             New-Item -Path $Win11RegAdj.$adjust.$key.Path
         }
         ForEach($property in $Win11RegAdj.$adjust.$key.Properties.Keys){
-
             $Type = ""
             Switch($Win11RegAdj.$adjust.$key.Properties.$property.Type){
-                
                 "REG_NONE"       {$Type = "None"}
                 "REG_SZ"         {$Type = "String"}
                 "REG_EXPAND_SZ"  {$Type = "ExpandString"}
@@ -114,10 +111,8 @@ ForEach($adjust in $Win11RegAdj.Keys){
                 "REG_MULTI_SZ"   {$Type = "MultiString"}
                 "REG_QWORD"      {$Type = "Qword"}
                 "Unknown"        {$Type = "Unknown"}
-
                 default{$Type = "String"}
             }
-
             New-ItemProperty `
             -Path $Win11RegAdj.$adjust.$key.Path `
             -Name $Win11RegAdj.$adjust.$key.Properties.$property.Name `
