@@ -139,3 +139,7 @@ ForEach($adjust in $Win11RegAdj.Keys){
 ForEach($app in $Win11AppList){
     Get-AppxPackage -AllUsers -Name "*$app*" | Remove-AppxPackage -AllUsers
 }
+
+#Region Winget Commands
+winget uninstall "Windows web experience Pack"
+#EndRegion
